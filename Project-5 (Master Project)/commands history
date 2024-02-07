@@ -1,0 +1,44 @@
+#jenkins ec2
+
+sudo su
+passwd ubuntu #set password... same for all servers
+vi /etc/ssh/sshd_config  #set password policies to yes
+sudo su ubuntu
+
+ssh-keygen -t rsa
+sudo service sshd restart
+ssh-copy-id ubuntu@18.217.100.5
+ssh-copy-id ubuntu@18.188.85.189
+vi jenkins.sh  #copy and save deployment script
+chmod +x jenkins.sh
+./jenkins.sh
+ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+#ansible ec2
+
+sudo su
+passwd ubuntu #set password... same for all servers
+vi /etc/ssh/sshd_config  #set password policies to yes
+sudo su ubuntu
+
+ssh-keygen -t rsa
+sudo service sshd restart
+ssh-copy-id ubuntu@18.217.100.5
+vi ansible.sh   #copy and save deployment script
+chmod +x ansible.sh
+./ansible.sh
+
+#kubernetes ec2
+
+sudo su
+passwd ubuntu #set password... same for all servers
+vi /etc/ssh/sshd_config  #set password policies to yes
+sudo su ubuntu
+
+ssh-keygen -t rsa
+sudo service sshd restart
+vi kubernetes.sh
+chmod +x kubernetes.sh
+ ./kubernetes.sh
+
+  
